@@ -267,6 +267,7 @@ Rails.application.routes.draw do
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
+  post '/user/admin_check' => 'user_admin_check#admin_check'
 
   get '/program', to: redirect(BLOG_URL || '', status: 302)
   get '*path',    to: redirect(PAGE_NOT_FOUND_URL || '', status: 302), constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
