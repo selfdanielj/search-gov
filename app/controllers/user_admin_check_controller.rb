@@ -12,8 +12,8 @@ class UserAdminCheckController < ApplicationController
     if email.nil? || email.blank?
       render json: { error: "An 'email' parameter and value are required." }, status: :unprocessable_entity
     else
-      user = User.find_by(email:, is_affiliate_admin: true)
-      render json: { email:, is_admin: user ? false : true }, status: :ok
+      user = User.find_by(email:, is_affiliate_admin: true, approval_status: 'approved')
+      render json: { email:, is_admin: user ? true : false }, status: :ok
     end
   end
 
